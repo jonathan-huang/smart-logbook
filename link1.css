@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+* {font-family: PT Sans!important;}
+html, body {
+	width: 100%!important;
+	height: 100%!important;
+	background: rgb(220, 220, 220)!important; 
+}
+h1 {
+	text-align: center!important;
+	font-family: Slabo 27px!important;
+	font-style: italic!important;
+	font-size: 50px!important;
+}
+textarea {
+	display: block!important;
+	margin: 0.4%!important;
+}
+textarea:focus {
+	border: 2px solid red!important;
+}
+.logs, .imLogs {
+	height: 80%!important;
+	width: 40%!important;
+	display: inline-block!important;
+	vertical-align: top!important;
+}
+.imLogs {margin-left: 7%!important;}
+/*tabs*/
+.tabs{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.tabs li{
+	background: none;
+	color: #222;
+	display: inline-block;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+.tab-1, .tab-2, .tab-3 {
+	transition-timing-function: ease-out!important;
+	transition-duration: 0.5s!important;
+}
+.tab-1:hover, .tab-2:hover, .tab-3:hover {
+	background: #ededed!important;
+}
+.tabs .current{
+	background: #ededed;
+	color: #222;
+}
+.tab-content{
+	display: none;
+	background: #ededed;
+	padding: 15px;
+}
+.tab-content.current{
+	display: inherit;
+}
