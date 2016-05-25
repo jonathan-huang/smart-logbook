@@ -2,19 +2,21 @@
     <head>
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script src="script.js" type="text/javascript"></script>
+		<script src="httpRequest.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="link1.css">
 		<link rel="icon" type="image/png" href="https://pixabay.com/static/uploads/photo/2012/04/11/11/45/document-27655_960_720.png">
 		<title>Logbook | Your smart note book</title>
 	</head>
 	<body>
 	    <noscript>Sorry, Logbook cannot function if your current browser does not support jquery</noscript>
-	    <h1>Logbook _<span style="color: blue">/</span></h1>
+	    <h1>Logbook _<span style="color: blue">/</span><sup style="font-size: 20px!important; color: green; font-family: Sans!important">&nbsp;&nbsp;version 1.0</sup></h1>
 		<ul class="tabs">
-		    <li class="tab-links current tab-1" data-tab="tab-1">logging area</li>
-			<li class="tab-links tab-2" data-tab="tab-2">Your logs</li>
-			<li class="tab-links tab-3" data-tab="tab-3">Settings</li>
+		    <li class="tab-links tab-1" data-tab="tab-1">logging area</li>
+			<li class="tab-links current tab-2" data-tab="tab-2">introduction</li>
+			<li class="tab-links tab-3" data-tab="tab-3">Your logs</li>
+			<li class="tab-links tab-4" data-tab="tab-4">Settings</li>
 		</ul>
-		<div id="tab-1" class="tab-content current">
+		<div id="tab-1" class="tab-content">
 		    <h4 id="c"></h4>
 		    <textarea id="log" type="text" placeholder="type in your log title" style="color: green; width: 40%"></textarea>
 		    <textarea id="logC" rows="5" placeholder="type in your log" style="color: green; width: 40%"></textarea>
@@ -22,20 +24,36 @@
 		    <input id="rateIm" type="button" value="Marked as important logs" style="width: 15%">
 			<input id="sendE" type="button" value="send to inbox" style="width: 15%">
 		</div>
-		<div id="tab-2" class="tab-content">
-			<ul class="logs">
-		        <h3>Your logs</h3>
-				<h4 style="color: grey;" id="st">You don't have any logs here yet.</h4>
-		    </ul>
-		    <ol class="imLogs">
-			    <h3>Important logs</h3>
-				<h4 style="color: grey;" id="Ist">You don't have any logs here yet.</h4>
-		    </ol>
+		<div id="tab-2" class="tab-content current">
+		    <h3>What is Logbook and what can it do?</h3>
+			<p style="margin-left: 2%">Logbook is a clever software which functions along with gmail, it asks users for gamil addesses and then enbles
+			logging functions, as email addresses are<br>saved to the server, users can log notes to the display board. The notes displayed are not permanent 
+			and will be cleared on reloading and refreshing,<br>but a formatted copy of note will be sent to the users' email addresses with loggeg titles
+			and loggeg contents, as well as the time.</p>
+			<br><h3>How to use Logbook</h3>
+			<ul>
+			    <li style="margin-left: 2%">First, to enable log tracking, go to settings and find where it says Email logging and enable it by <br>clicking the
+			    check box. Then, you will see the input is enabled. Type in your email address and submit,<br>if it says <q>You email has been saved</q>, you 
+			    can start the next step.</li>
+				<li style="margin: 1% 0 0 2%">Then, go to logging area, the first input field is for you to enter your note title which will be replace with Untitle.
+				if nothing is entered, the second field is for the note's contents, which will be replaced with - if nothing is entered.</li>
+				<li style="margin: 1% 0 0 2%">Now choose if you want to classify your note as important or normal and... Log and have fun!</li>
+			</ul>
 		</div>
 		<div id="tab-3" class="tab-content">
-		    <h3>Enter your email so any changes can be sent to your email address</h3>
+			<ul class="logs">
+		        <h3>Your logs</h3>
+				<h4 style="color: grey;" id="st">You don't have ny logs here yet.</h4>
+		    </ul>
+		    <ul class="imLogs">
+			    <h3>Important logs</h3>
+				<h4 style="color: grey;" id="Ist">You don't have any logs here yet.</h4>
+		    </ul>
+		</div>
+		<div id="tab-4" class="tab-content">
+		    <h3>Email logging</h3>
 		    <input id="email" type="text" placeholder="enter your email" style="color: green; width: 40%">
-			<input id="semail" type="button" value="submit">
+			<input onclick="semail()" type="button" value="submit">
 		</div>
 	</body>
 </html>
