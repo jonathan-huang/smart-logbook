@@ -28,8 +28,8 @@ textarea:focus {
 .imLogs {margin-left: 7%!important;}
 /*tabs*/
 .tabs{
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	list-style: none;
 }
 .tabs li{
@@ -37,18 +37,24 @@ textarea:focus {
 	color: #222;
 	display: inline-block;
 	padding: 10px 15px;
+	margin: 0 5px 0 0;
 	cursor: pointer;
+	border-top-right-radius: 10%;
+	border-top-left-radius: 10%;
 }
-.tab-1, .tab-2, .tab-3 {
+.tab-1, .tab-2, .tab-3, .tab-4 {
 	transition-timing-function: ease-out!important;
 	transition-duration: 0.5s!important;
 }
-.tab-1:hover, .tab-2:hover, .tab-3:hover {
+.tab-1:hover, .tab-2:hover, .tab-3:hover, .tab-4:hover {
 	background: #ededed!important;
 }
 .tabs .current{
 	background: #ededed;
 	color: #222;
+	border-top: 1px solid blue;
+	border-left: 1px solid blue;
+	border-right: 1px solid blue;
 }
 .tab-content{
 	display: none;
