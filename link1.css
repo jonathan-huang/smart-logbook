@@ -1,66 +1,31 @@
+/*import*/
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 @import url('https://fonts.googleapis.com/css?family=Slabo+27px');
-* {font-family: PT Sans!important;}
-html, body {
-	width: 100%!important;
-	height: 100%!important;
-	background: rgb(220, 220, 220)!important; 
-}
-h1 {
-	text-align: center!important;
-	font-family: Slabo 27px!important;
-	font-style: italic!important;
-	font-size: 50px!important;
-}
-textarea {
-	display: block!important;
-	margin: 0.4%!important;
-}
-textarea:focus {
-	border: 2px solid red!important;
-}
-.logs, .imLogs {
-	height: 80%!important;
-	width: 40%!important;
-	display: inline-block!important;
-	vertical-align: top!important;
-}
+
+/*general*/
+* {font-family: PT Sans!important; box-sizing: border-box!important;}
+html, body {width: 100%!important; height: 102%!important; background: rgb(220, 220, 220)!important; }
+
+/*ids*/
+#colour-picker {width: 15%; height: 150px; border: 1px solid black; padding: 0.5%!important; background: white!important; position: absolute; top: 42%; left: 40%;}
+#progress { position: absolute; width: 50%; height: 12px; background-color: lightgrey; display: none; top: 40%;left: 20%;}
+#bar {position: absolute;width: 1%;height: 100%;background-color: green;}
+
+/*html*/
+h1 {text-align: center!important;margin-top: 5%;font-family: Slabo 27px!important;font-style: italic!important;font-size: 50px!important;}
+textarea {display: block!important;margin: 0.4%!important;}
+textarea:focus {border: 2px solid red!important;}
+input {background: rgb(230, 230, 230)!important;display: inline!important;}
+
+/*classes*/
+.color {padding: 2.5% 2%!important;margin: -1px!important;border: 2px solid black!important;display: inline-block;}
+.logs, .imLogs {height: 80%!important;width: 40%!important;display: inline-block!important;vertical-align: top!important;}
 .imLogs {margin-left: 7%!important;}
 /*tabs*/
-.tabs{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-.tabs li{
-	background: none;
-	color: #222;
-	display: inline-block;
-	padding: 10px 15px;
-	margin: 0 5px 0 0;
-	cursor: pointer;
-	border-top-right-radius: 10%;
-	border-top-left-radius: 10%;
-}
-.tab-1, .tab-2, .tab-3, .tab-4 {
-	transition-timing-function: ease-out!important;
-	transition-duration: 0.5s!important;
-}
-.tab-1:hover, .tab-2:hover, .tab-3:hover, .tab-4:hover {
-	background: #ededed!important;
-}
-.tabs .current{
-	background: #ededed;
-	color: #222;
-	border-top: 1px solid blue;
-	border-left: 1px solid blue;
-	border-right: 1px solid blue;
-}
-.tab-content{
-	display: none;
-	background: #ededed;
-	padding: 15px;
-}
-.tab-content.current{
-	display: inherit;
-}
+.tabs{margin: 0;padding: 0;list-style: none;}
+.tabs li{background: none;color: #222;display: inline-block;padding: 10px 15px;margin: 0 5px 0 0;cursor: pointer;border-top-right-radius: 10%;border-top-left-radius: 10%;}
+.tab-1, .tab-2, .tab-3, .tab-4 {transition-timing-function: ease-out!important;transition-duration: 0.5s!important;}
+.tab-1:hover, .tab-2:hover, .tab-3:hover, .tab-4:hover {background: #ededed!important;}
+.tabs .current{background: #ededed;color: #222;border-top: 1px solid blue;border-left: 1px solid blue;border-right: 1px solid blue;}
+.tab-content{display: none;background: #ededed;padding: 15px;}
+.tab-content.current{display: inherit;}
