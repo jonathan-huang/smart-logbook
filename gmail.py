@@ -10,14 +10,15 @@ class emailHandler(tornado.web.RequestHandler):
 		
         self.add_header("Access-Control-Allow-Origin", "*")
         email = self.get_argument("email")
+        log = self.get_argument("log")
         with open("emailFile.txt", "a") as emailFile:
             emailFile.write(email + "\n")
             
         sender = 'snazzyemailsender@gmail.com'
-        receivers = ['huang20041014@gmail.com']
+        receivers = [email]
 
         message = 
-		"""You logged: """ + #text
+		"""You logged: """ + log
 		+ """ at """ + ctime
 
 
@@ -36,7 +37,7 @@ if __name__ == "__main__":
     app = tornado.web.Application([
         (r"/", emailHandler),
     ])
-    app.listen(95)
+    app.listen(94)
     tornado.ioloop.IOLoop.current().start()
 
 
