@@ -1,66 +1,98 @@
+<?php 
+    $serverN = "gegahost.net";
+    $userN = "gega_18032194";
+    $passcodeN = "10321392";
+    $connection = new mysqli($serverN, $userN, $passcodeN);
+    try {
+    
+    }
+                            
+?>
+
 <!DOCTYPE html><html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="log,book,smart logbook,notes">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script src="script.js" type="text/javascript"></script>
 		<script src="httpRequest.js" type="text/javascript"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="link1.css">
 		<link rel="icon" type="image/png" href="https://pixabay.com/static/uploads/photo/2012/04/11/11/45/document-27655_960_720.png">
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 		<title>Logbook | Your smart note book</title>
 	</head>
 	<body>
-	    <noscript>Sorry, Logbook cannot function if your current browser does not support jquery</noscript>
-        <div id="progress">
-            <div id="bar"></div>  
-            <div id="label" style="margin-top: 10%"></div>
+	    <noscript>Sorry, Logbook cannot function if your current browser does not support javascript</noscript>
+        <div class="container_t">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href="#contact_01" data-toggle="tab">Main</a></li>
+                <li><a href="#contact_02" data-toggle="tab">Your logs</a></li>
+                <li><a href="#" class="add-tab">+</a></li>
+            </ul>
+            <div style="border-bottom: 2px solid white;">
+            <div class="tab-content">
+                <div class="tab-pane active" id="contact_01">
+                    <div id="progress"><div id="bar"></div>  <div id="label" style="margin-top: 10%"></div></div>
+                <div id="snackbar"></div>
+                <div id="colour-picker" style="display: none;">
+        	        <span class="color" onclick="cgColor('black')" style="background: black"></span>
+				    <span class="color" onclick="cgColor('grey')" style="background: grey"></span>
+			        <span class="color" onclick="cgColor('darkgrey')" style="background: darkgrey"></span>	
+				    <span class="color" onclick="cgColor('lightgrey')" style="background: lightgrey"></span>
+			        <span class="color" onclick="cgColor('ashgrey')" style="background: ashgrey"></span>
+				    <span class="color" onclick="cgColor('darkblue')" style="background: darkblue; margin-left: 7%!important;"></span>
+				    <span class="color" onclick="cgColor('blue')" style="background: blue"></span>
+			        <span class="color" onclick="cgColor('royalblue')" style="background: royalblue"></span>
+			        <span class="color" onclick="cgColor('yellow')" style="background: yellow"></span>
+				    <span class="color" onclick="cgColor('orange')" style="background: orange"></span>
+				    <span class="color" onclick="cgColor('red')" style="background: red"></span>
+				    <span class="color" onclick="cgColor('crimson')" style="background: crimson"></span>
+                    <br><span class="color" onclick="cgColor('olive')" style="background: olive;"></span>
+                    <span class="color" onclick="cgColor('darkgreen')" style="background: darkgreen;"></span>
+                    <span class="color" onclick="cgColor('green')" style="background: green;"></span>
+                    <a onclick="closeCc()" class="click">save</a>   
+                </div>
+                <div id="themes" style="display: none">
+                    <span onclick="cgBI('grass-land', 'http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/reader/bg.png', '#333')"><img class="theme pic-1" src="http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/reader/bg.png" alt=""></span>
+                    <span onclick="cgBI('river', 'http://php.drishinfo.com/photostudioone/wp-content/uploads/2014/11/nature-wallpaper-hd-1920x1080.jpg', 'white')"><img class="theme pic-2" src="http://php.drishinfo.com/photostudioone/wp-content/uploads/2014/11/nature-wallpaper-hd-1920x1080.jpg" alt=""></span>
+                    <span onclick="cgBI('insect', 'https://pixabay.com/static/uploads/photo/2015/06/03/14/24/ladybug-796481_960_720.jpg', '#C20303')"><img class="theme pic-3" src="https://pixabay.com/static/uploads/photo/2015/06/03/14/24/ladybug-796481_960_720.jpg" alt=""></span>
+                    <span onclick="cgBI('mountain', 'https://static.pexels.com/photos/1562/italian-landscape-mountains-nature.jpg', 'blue')"><img class="theme pic-4" src="https://static.pexels.com/photos/1562/italian-landscape-mountains-nature.jpg" alt=""></span>
+                    <span onclick="cgBI('sunset', 'https://pixabay.com/static/uploads/photo/2015/09/02/12/25/sunset-918403_960_720.jpg', 'white')" alt=""><img class="theme pic-5" src="https://pixabay.com/static/uploads/photo/2015/09/02/12/25/sunset-918403_960_720.jpg" alt=""></span>
+                    <span onclick="cgBI('grass', 'http://farm4.staticflickr.com/3634/3547901767_72708e03a0_z.jpg?zz=1', '#333')"><img class="theme pic-6" src="http://farm4.staticflickr.com/3634/3547901767_72708e03a0_z.jpg?zz=1" alt=""></span>
+                    <br><a onclick="closeBi()" class="click">save</a>
+                </div>
+                <!--end-->
+                <main style="position: absolute;width: 100%; top: 6%;">
+                    <header>
+                        <ul class="nav">
+                            <li class="dropdown"><a href="#" class="dropbtn" style="color: black!important; opacity: 1;">settings</a>
+                                <div class="dropdown-content">
+			                        <br><h4 style="line-height: 0.5;" onclick="setCc()">Font colour</h4>
+                                    <br><h4 style="line-height: 0.5;" onclick="setBi()">Themes</h4>
+                                </div>
+                            </li>
+                        </ul>
+                    </header>
+	                <big><h1 id="title">Logbook</h1></big>
+		            <div>
+		                <textarea id="log" type="text" rows="1" placeholder="type in your log title" style="color: green; width: 60%; margin: 2% 0 0 20%!important;"></textarea>
+		                <textarea id="logC" rows="3" placeholder="type in your log" style="color: green; width: 54.5%; margin-left: 20%!important;"></textarea>
+		                <button id="rateL">Log</button><button id="rateIm">&#9733;</button>
+	            	</div>
+                </main>
+            </div>
+            <div class="tab-pane" id="contact_02">
+                <div class="container">
+    		        <ul class="logs">
+				        <h5 style="color: grey;" id="st">You don't have any logs here yet.</h5>
+		            </ul>
+                </div>
+            </div>
+            <footer>
+                <h5 style="margin-top: 0%;"><b>&copy;&nbsp;smart logbook</b>&nbsp;&nbsp;made by jonathan jonathan@smart-logbook.ml</h5>
+            </footer>
         </div>
-        <main>
-	    <h1>Logbook _<span style="color: blue">/</span><sup style="font-size: 20px!important; color: green; font-family: Sans!important">&nbsp;&nbsp;&nbsp;version 1.1.2</span></sup></h1>
-		<ul class="tabs">
-		    <li class="tab-links tab-1 current" data-tab="tab-1">logging area</li>
-			<li class="tab-links tab-3" data-tab="tab-2">Your logs</li>
-			<li class="tab-links tab-4" data-tab="tab-3">Settings</li>
-		</ul>
-		<div id="tab-1" class="tab-content current">
-            <h4 id="c"></h4>
-		    <textarea id="log" type="text" placeholder="type in your log title" style="color: green; width: 40%"></textarea>
-		    <textarea id="logC" rows="5" placeholder="type in your log" style="color: green; width: 40%"></textarea>
-		    <input id="rateL" type="button" value="Marked as normal logs" style="width: 15%">
-		    <input id="rateIm" type="button" value="Marked as important logs" style="width: 15%">
-		</div>
-		<div id="tab-2" class="tab-content">
-			<ul class="logs">
-		        <h3>Your logs</h3>
-				<h4 style="color: grey;" id="st">You don't have any logs here yet.</h4>
-		    </ul>
-		    <ul class="imLogs">
-			    <h3>Important logs</h3>
-				<h4 style="color: grey;" id="Ist">You don't have any logs here yet.</h4>
-		    </ul>
-		</div>
-		<div id="tab-3" class="tab-content">
-		    <h3>Email logging</h3>
-		    <textarea id="email" placeholder="enter your email" style="color: green; width: 40%"></textarea>
-			<input onclick="semail()" type="button" value="submit" style="position: absolute!important; top: 28%; left: 25%;">
-			<br><h3 style="line-height: 0.5;">Set font colour</h3>
-            <a onclick="setCc()" class="click">click here</a>
-			<div id="colour-picker" style="display: none;">
-			    <span class="color" onclick="cgColor('black')" style="background: black"></span>
-				<span class="color" onclick="cgColor('grey')" style="background: grey"></span>
-				<span class="color" onclick="cgColor('darkgrey')" style="background: darkgrey"></span>	
-				<span class="color" onclick="cgColor('lightgrey')" style="background: lightgrey"></span>
-				<span class="color" onclick="cgColor('ashgrey')" style="background: ashgrey"></span>
-				<span class="color" onclick="cgColor('darkblue')" style="background: darkblue; margin-left: 7%!important;"></span>
-				<span class="color" onclick="cgColor('blue')" style="background: blue"></span>
-				<span class="color" onclick="cgColor('royalblue')" style="background: royalblue"></span>
-			    <span class="color" onclick="cgColor('yellow')" style="background: yellow"></span>
-				<span class="color" onclick="cgColor('orange')" style="background: orange"></span>
-				<span class="color" onclick="cgColor('red')" style="background: red"></span>
-				<span class="color" onclick="cgColor('crimson')" style="background: crimson"></span>
-                <a onclick="closeCc()" class="click">okay</a>
-			</div>
-		</div>
-        </main>
-	</body>
+    </body>
 </html>
