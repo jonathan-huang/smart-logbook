@@ -1,31 +1,49 @@
 /*import*/
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 @import url('https://fonts.googleapis.com/css?family=Slabo+27px');
-
-/*general*/
 * {font-family: PT Sans!important; box-sizing: border-box!important;}
-html, body {width: 100%!important; height: 102%!important; background: rgb(220, 220, 220)!important; }
-
-/*ids*/
-#colour-picker {width: 15%; height: 150px; border: 1px solid black; padding: 0.5%!important; background: white!important; position: absolute; top: 42%; left: 40%;}
+html, body {width: 100%!important; height: 100%!important; background: rgb(220, 220, 220); font-weight: bold;
+background-image: url('http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/reader/bg.png');
+-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}
+@-webkit-keyframes fadein {from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;}}
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;}}
+@-webkit-keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;}}
+@keyframes fadeout {from {bottom: 30px; opacity: 1;}to {bottom: 0; opacity: 0;}}
+#snackbar {visibility: hidden;min-width: 250px;margin-left: -125px;background-color: #333;color: #fff;text-align: center;border-radius: 2px;padding: 16px;position: fixed;left: 50%; z-index: 4; bottom: 30px;}
+#colour-picker {width: 15%; height: 150px; border: 1px solid black; padding: 0.5%!important; background: white!important; position: fixed; top: 42%; left: 40%; z-index: 2;}
+#themes {width: 50%; height: 300px; padding: 0.5%!important; background: lightgrey!important; position: fixed; top: 32%; left: 25%; z-index: 3; opacity: 0.9;}
 #progress { position: absolute; width: 50%; height: 12px; background-color: lightgrey; display: none; top: 40%;left: 20%;}
 #bar {position: absolute;width: 1%;height: 100%;background-color: green;}
+#rateL {position: absolute; top: 77%; left: 74.5%; background: #3399FF!important; color: white; height: 30px; width: 5.5%;}
+#rateIm {position: absolute; top: 88%; left: 74.5%; background: #3399FF!important; width: 5.5%; height: 30px; color: lightgrey;}
 
-/*html*/
-h1 {text-align: center!important;margin-top: 5%;font-family: Slabo 27px!important;font-style: italic!important;font-size: 50px!important;}
+a {color: darkturquoise;}
+header {width: 100%; background: blue; opacity: 0.7; height: 45px; position: absolute; vertical-align: top;}
+h1 {text-align: center!important;margin-top: 8%;font-family: Slabo 27px!important;font-size: 67px;font-style: italic!important;font-weight: bold;}
 textarea {display: block!important;margin: 0.4%!important;}
-textarea:focus {border: 2px solid red!important;}
-input {background: rgb(230, 230, 230)!important;display: inline!important;}
+footer {position: absolute; width: 100%; height: 34px; background: lightgrey; bottom: 0; text-align: center; padding: 0.2%;}
 
-/*classes*/
+.date {margin: 1% 0 0.2% 40%; font-weight: normal; font-size: 10px;}
+.click {position: relative; vertical-align: bottom;}
+.theme {height: 70px; width: 100px; border: 2px solid white; margin: 0.5%;}
+.pic-1:hover, .pic-2:hover, .pic-3:hover, .pic-4:hover, .pic-5:hover, .pic-6:hover {opacity: 0.8!important; border: 3px solid white!important;}
+.true {color: #FFA900!important;}
+.submit { position: absolute!important; top: 14%!important; left: 26%; color: green;}
+.description {display: none; padding: 2%;}
+.LoggingNotes:focus .description, .LoggingNotes:focus {display: block; background: #CFCFCF!important;}
+.head {position: fixed; margin: 10% 0 0 10%;}
+.LoggingNotes { word-wrap: break-word; margin-top: 20px; color: black; font-size: 17px;width: 90%;}
+.container_t {vertical-align: top;}
+.nav-tabs > li {position:relative; width: 130px!important; border-radius: 50px!important;}
+.nav-tabs > li > a {display:block; color: blue!important;}
+.nav-tabs > li > span {display:none;cursor:pointer;position:absolute;right: 6px;top: 8px;color: red;}
+.nav-tabs > li:hover > span {display: inline-block;} .nav {list-style: none; float: right;}
+.add-tab {width: 50px!important;}
+.dropdown-content {position: absolute; display: none; width: 600px!important; border: 1px solid black; padding: 5%; background: white!important;}
+.nav:hover .dropdown-content {display: block!important; margin-left: -523px!important;}
+.container {margin-top: 10%!important; width: 64%!important; background: rgb(230, 230, 230); position: absolute; width: 100%; right: 10%;}
+.show {visibility: visible !important; -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;animation: fadein 0.5s, fadeout 0.5s 2.5s;}
 .color {padding: 2.5% 2%!important;margin: -1px!important;border: 2px solid black!important;display: inline-block;}
-.logs, .imLogs {height: 80%!important;width: 40%!important;display: inline-block!important;vertical-align: top!important;}
-.imLogs {margin-left: 7%!important;}
-/*tabs*/
-.tabs{margin: 0;padding: 0;list-style: none;}
-.tabs li{background: none;color: #222;display: inline-block;padding: 10px 15px;margin: 0 5px 0 0;cursor: pointer;border-top-right-radius: 10%;border-top-left-radius: 10%;}
-.tab-1, .tab-2, .tab-3, .tab-4 {transition-timing-function: ease-out!important;transition-duration: 0.5s!important;}
-.tab-1:hover, .tab-2:hover, .tab-3:hover, .tab-4:hover {background: #ededed!important;}
-.tabs .current{background: #ededed;color: #222;border-top: 1px solid blue;border-left: 1px solid blue;border-right: 1px solid blue;}
-.tab-content{display: none;background: #ededed;padding: 15px;}
-.tab-content.current{display: inherit;}
+.logs {height: 80%!important;width: 80%!important;display: inline-block!important;vertical-align: top!important; list-style: none;}
+.close {color: rgb(190, 190, 190)!important; opacity: 1; margin-right: -40px!important;}
+.close:hover {color: red!important; opacity: 0.6;line-height: 1;}
