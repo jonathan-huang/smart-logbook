@@ -1,70 +1,43 @@
-var color;
-var cgColor = function(c) {alert("You change colour to " + c + ".");color = c; return c;};
-var setCc = function() {document.getElementById("colour-picker").style.display = "block";};
-var closeCc = function() {document.getElementById("colour-picker").style.display = "none";};
-
-$(document).ready(function() {
-	$("#rateL").click(function(e) {
-        
+var color; var stateOfLog = "";
+var cgColor = function(c) {setBar("Set color to " + c); color = c; return c;};
+var cgBI = function(theme, image, color) { setBar("Set theme to " + theme); document.body.style.backgroundImage = "url(" + image + ")";  document.getElementById("title").style.color = color;};
+var setCc = function(){$("main").css("opacity", "0.5"); $("#colour-picker").css({"display":"block", "opacity":"1"}); };
+var closeCc = function() {$("#colour-picker").css("display", "none"); $("main").css({"opacity":"1"}) };
+var setBi = function() {$("main").css("opacity", "0.5"); $("#themes").css({"display":"block", "opacity":"1"}); };
+var closeBi = function() {$("#themes").css("display", "none"); $("main").css({"opacity":"1"}) };
+var setBar = function(text) {$("#snackbar").html("<span style='color:white'>" + text + "...</span>"); var x = document.getElementById("snackbar"); x.className = "show"; setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);};
+$(document).ready(function() { 
+    $("#rateIm").click(function() {
+        if (stateOfLog === "important") {stateOfLog = ""; $(this).removeClass("true").css("color", "lightgrey"); } else {stateOfLog = "important"; $(this).addClass("true");}
+    });
+    $("#rateL").click(function() {
+        var date = new Date();
+        if (stateOfLog === "") { stateOfLog = ""; }
+        var log = $("#log").val(); var logC = $("#logC").val();
+        var run = function() {if (width >= 100) {clearInterval(id); $("main").show(); $("#progress").hide()} else {width++; elem.style.width = width + '%'; }};
+        if ((log === ""|| log === null) && (logC === "" || logC === null)) {
+            setBar("Your log is blank.");
+		}else {
+            var elem = document.getElementById("bar"); var width = 1; var id = setInterval(run, 6); var description =  "<br><span class='description' style='color: " + color + "!important;font-size: 15px;font-weight: normal;'>&nbsp;&nbsp;&nbsp;" + logC + "</span>";
+            var options = { weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" };
+            if (log==="" || log === null) {log = "Untitled." ;} else if (logC === "" || logC === null) {logC = "-";}
+            $("main").css("display", "none"); $("#progress, #bar").css("display", "block");       
+            $(".logs").prepend("<li class='LoggingNotes' tabindex='0''>" + log + "<span class='date'>"+date.toLocaleTimeString("en-us", options)+"</span>" + description + "<span class='close'> x <span style='font-size: 10px'>" + stateOfLog.slice(0, 2) + "</span></span></li>");
+            setBar("title was: " + log); $("#st").remove();  } 
+    });
+    $(".nav-tabs").on("click", "a", function (e) {
+        e.preventDefault(); if (!$(this).hasClass('add-tab')) {$(this).tab('show'); }
+    })
+    .on("click", "span", function () {
+        var anchor = $(this).siblings('a'); $(anchor.attr('href')).remove();
+        $(this).parent().remove();
+        $(".nav-tabs li").children('a').first().click();
+    });
+    $('.add-tab').click(function (e) {
         e.preventDefault();
-        var thisid = $(".logs").children().length;
-        var tabId = 'num_' + thisid;
-        
-		var log = $("#log").val();
-		var logC = $("#logC").val();
-		if ((log === ""|| log === null) && (logC === "" || logC === null)) {
-			$("#c").html("<span style='color: red'>Invalid log.</span>");
-			alert("Your log is Blank!");
-		}else {
-            if (log==="" || log === null) {log = "Untitled." ;}
-            else if (logC === "" || logC === null) {logC = "-";}
-            $("main").css("display", "none");
-            $("#progress, #bar").css("display", "block");
-            var elem = document.getElementById("bar"); 
-            var width = 1;
-            var id = setInterval(frame, 6);
-            function frame() {
-                if (width >= 100) { clearInterval(id);$("main").css("display", "block");$("#progress, #bar").css("display", "none");}
-                else {width++; elem.style.width = width + '%'; document.getElementById("label").innerHTML = width * 1 + '%';}
-            }
-            
-            $(".logs").append("<li style='word-wrap: break-word; margin-top: 20px;' id='" + tabId + "'><span style='font-weight: bold; color: rgb(90, 90, 90); font-size: 20px'>" + log + "</span><br><span style='color: " + color + "!important;'>" + logC + "</span><span class='close' nameforid='" + tabId + "'> x </span></li>");
-            $("#c").html("<span style='color: green'>" + "text was logged." + "</span>" + "<span style='font-size: 10px;'>" + "&nbsp;&nbsptitle was: " + log + "</span>");
-            $("#st").remove();
-        
-        }	
-	});
-});
-$(document).ready(function() {
-	$("#rateIm").click(function() {
-        var log = $("#log").val();
-		var logC = $("#logC").val();
-		if ((log === ""|| log === null) && (logC === "" || logC === null)) {
-			$("#c").html("<span style='color: red'>Invalid log.</span>");
-			alert("Your log is Blank!");
-		}else {
-            if (log==="" || log === null) {log = "Untitled." ;}
-            else if (logC === "" || logC === null) {logC = "-";}
-            $("main").css("display", "none");
-            $("#progress, #bar").css("display", "block");
-            var elem = document.getElementById("bar"); 
-            var width = 1;
-            var id = setInterval(frame, 6);
-            function frame() {
-                if (width >= 100) { clearInterval(id);$("main").css("display", "block");$("#progress, #bar").css("display", "none");}
-                else {width++; elem.style.width = width + '%'; document.getElementById("label").innerHTML = width * 1 + '%';}
-            }$(".imLogs").append("<li style='word-wrap: break-word; margin-top: 20px;'>" + "<span style='font-weight: bold; color: rgb(90, 90, 90); font-size: 20px'>" + log + "</span>" + "<br>" + "<span style='color: " + color + "!important;'>" + logC + "</span>" + "</li>");
-            $("#c").html("<span style='color: green'>" + "text was logged." + "</span>" + "<span style='font-size: 10px;'>" + "&nbsp;&nbsptitle was: " + log + "</span>");
-            $("#Ist").remove();
-        }	
-	});
-});
-$(document).ready(function(){
-	$('ul.tabs li').click(function(){
-		var tab_id = $(this).attr('data-tab');
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-	});
+        var id = $(".nav-tabs").children().length; var tabId = 'contact_' + id;
+        $(this).closest('li').before('<li><a href="#contact_' + id + '">New Tab</a> <span> x </span></li>');
+        $('.tab-content').append('<div class="tab-pane" id="' + tabId + '"><h1 class="head">Still Developing..</h1></div>');
+        $('.nav-tabs li:nth-child(' + id + ') a').click();
+    });
 });
